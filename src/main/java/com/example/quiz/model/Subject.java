@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+// This manages the forward relationship
 @AllArgsConstructor
 public class Subject {
     @Id

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SubjectService {
@@ -29,8 +30,17 @@ public class SubjectService {
     }
     // Create a new subject
     public Subject createSubject(Subject subject) {
+        // Check if subject with the same name exists
+        Optional<Subject> existingSubject = subjectRepository.findByName(subject.getName());
+        if (existingSubject.isPresent()) {
+            throw new RuntimeException("Subject with name '" + subject.getName() + "' already exists.");
+        }
+
+        // Save the new subject
         return subjectRepository.save(subject);
     }
+
+
     // Add a question to a specific subject
     public Question addQuestionToSubject(Long subjectId, Question question) {
         // Find the subject

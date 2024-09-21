@@ -6,11 +6,13 @@ import com.example.quiz.model.Subject;
 import com.example.quiz.services.SubjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import org.slf4j.Logger;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/subjects")
@@ -32,8 +34,13 @@ public class SubjectController {
 
     @PostMapping
     public ResponseEntity<Subject> createSubject(@RequestBody Subject subject) {
-        Subject createdSubject = subjectService.createSubject(subject);
-        return ResponseEntity.ok(createdSubject);
+        try {
+            Subject createdSubject = subjectService.createSubject(subject);
+            return ResponseEntity.ok(createdSubject);
+        } catch (RuntimeException e) {
+            // If the subject already exists, return a conflict status
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
     }
 
     @PostMapping("/{subjectId}/questions")

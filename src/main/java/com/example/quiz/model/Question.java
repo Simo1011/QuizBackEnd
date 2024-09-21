@@ -1,5 +1,6 @@
 package com.example.quiz.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,6 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
-    @JsonIgnore
+    @JsonBackReference
     private Subject subject;
 }//class Question
