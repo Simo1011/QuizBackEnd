@@ -56,6 +56,15 @@ public class SubjectController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
     }
+    /**
+     * Adds a new question to a specific subject in the system.
+     *
+     * @param subjectId The unique identifier of the subject to which the question will be added.
+     *                  This is obtained from the URL path variable.
+     * @param question  The question to be added. The question's ID should be null, as it will be automatically generated.
+     * @return A ResponseEntity containing the created question. The HTTP status code will be 200 (OK) if the question is successfully added.
+     * @throws ResponseStatusException If the subject with the given ID does not exist. The HTTP status code will be 404 (Not Found) in this case.
+     */
 
     @PostMapping("/{subjectId}/questions")
     public ResponseEntity<Question> addQuestionToSubject(@PathVariable Long subjectId, @RequestBody Question question) {
