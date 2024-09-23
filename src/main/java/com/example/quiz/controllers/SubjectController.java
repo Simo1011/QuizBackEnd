@@ -26,6 +26,13 @@ public class SubjectController {
     public List<Subject> getAllSubjects() {
         return subjectService.getAllSubjects();
     }
+    /**
+     * Retrieves a list of questions associated with a specific subject.
+     *
+     * @param subjectId The unique identifier of the subject. This is obtained from the URL path variable.
+     * @return A list of questions associated with the specified subject. If no questions are found, an empty list is returned.
+     * @throws ResponseStatusException If the subject with the given ID does not exist.
+     */
 
     @GetMapping("/{subjectId}/questions")
     public List<Question> getQuestionsBySubject(@PathVariable Long subjectId) {
