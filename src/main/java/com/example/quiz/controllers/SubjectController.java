@@ -22,6 +22,11 @@ public class SubjectController {
     private SubjectService subjectService;
 
     private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
+    /**
+     * Retrieves a list of all subjects available in the system.
+     *
+     * @return A list of all subjects. If no subjects are found, an empty list is returned.
+     */
     @GetMapping
     public List<Subject> getAllSubjects() {
         return subjectService.getAllSubjects();
