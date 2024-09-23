@@ -38,6 +38,13 @@ public class SubjectController {
     public List<Question> getQuestionsBySubject(@PathVariable Long subjectId) {
         return subjectService.getQuestionsBySubject(subjectId);
     }
+    /**
+     * Creates a new subject in the system.
+     *
+     * @param subject The subject to be created. The subject's ID should be null, as it will be automatically generated.
+     * @return A ResponseEntity containing the created subject. The HTTP status code will be 200 (OK) if the subject is successfully created.
+     * @throws ResponseStatusException If a subject with the same name already exists. The HTTP status code will be 409 (Conflict) in this case.
+     */
 
     @PostMapping
     public ResponseEntity<Subject> createSubject(@RequestBody Subject subject) {
