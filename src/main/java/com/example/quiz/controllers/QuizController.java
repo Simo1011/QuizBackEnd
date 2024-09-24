@@ -1,5 +1,4 @@
 package com.example.quiz.controllers;
-;
 
 import com.example.quiz.dto.QuestionDTO;
 import com.example.quiz.dto.UserAnswerDTO;
