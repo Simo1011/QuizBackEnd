@@ -18,7 +18,14 @@ public class QuizController {
 
     @Autowired
     private QuizService quizService;
-
+    /**
+     * Endpoint to retrieve questions for a specific subject.
+     *
+     * @param subjectId The unique identifier of the subject for which questions are requested.
+     * @return A ResponseEntity containing a list of QuestionDTO objects.
+     *         The HTTP status code will be 200 (OK) if the request is successful.
+     *         The list of QuestionDTO objects represents the questions for the specified subject.
+     */
     // Endpoint to get questions for a specific subject
     @GetMapping("/subjects/{subjectId}/questions")
     public ResponseEntity<List<QuestionDTO>> getQuestionsForSubject(@PathVariable Long subjectId) {
