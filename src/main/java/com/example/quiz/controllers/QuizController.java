@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * Controller for handling quiz-related operations.
+ */
 @RestController
 @RequestMapping("/api/quiz")
 @CrossOrigin(origins = "http://localhost:3000")
