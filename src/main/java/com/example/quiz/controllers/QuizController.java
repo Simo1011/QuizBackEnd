@@ -32,7 +32,18 @@ public class QuizController {
         List<QuestionDTO> questions = quizService.getQuestionsForSubject(subjectId);
         return ResponseEntity.ok(questions);
     }
-
+    /**
+     * Endpoint to submit answers for a specific subject and get the result.
+     *
+     * @param subjectId The unique identifier of the subject for which answers are submitted.
+     * @param userAnswers A list of UserAnswerDTO objects representing the user's answers.
+     *                    Each UserAnswerDTO contains the questionId and the user's selected answer.
+     *
+     * @return A ResponseEntity containing a list of Boolean values.
+     *         The HTTP status code will be 200 (OK) if the request is successful.
+     *         Each Boolean value in the list represents the result of evaluating the corresponding answer.
+     *         A value of true indicates that the answer is correct, while a value of false indicates that the answer is incorrect.
+     */
     // Endpoint to submit answers and get the result
     @PostMapping("/subjects/{subjectId}/submit")
     public ResponseEntity<List<Boolean>> submitAnswers(@PathVariable Long subjectId, @RequestBody List<UserAnswerDTO> userAnswers) {
