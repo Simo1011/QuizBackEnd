@@ -13,7 +13,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/quiz")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://18.220.161.171:3000")
 public class QuizController {
 
     @Autowired
