@@ -17,7 +17,9 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api/subjects")
 //@CrossOrigin(origins = "http://localhost:3000") // Allow requests from localhost:3000
-@CrossOrigin(origins = "http://18.220.161.171:3000")
+//@CrossOrigin(origins = "http://18.220.161.171:3000")
+@CrossOrigin(origins = "${cors.allowed-origins}")
+
 public class SubjectController {
     @Autowired
     private SubjectService subjectService;
